@@ -1,0 +1,63 @@
+{
+    "greeting": "Добрый вечер",
+    "cards": [
+        {
+            "last_digits": "4556",
+            "total_spent": 91137.13,
+            "cashback": 911.37
+        },
+        {
+            "last_digits": "5091",
+            "total_spent": 2174.17,
+            "cashback": 21.74
+        },
+        {
+            "last_digits": "7197",
+            "total_spent": 27890.62,
+            "cashback": 278.91
+        }
+    ],
+    "top_transactions": [
+        {
+            "date": "23.11.2021",
+            "amount": -126105.03,
+            "category": "Переводы",
+            "description": "Перевод Кредитная карта. ТП 10.2 RUR"
+        },
+        {
+            "date": "17.11.2021",
+            "amount": -50000.0,
+            "category": "Переводы",
+            "description": "Пополнение вклада"
+        },
+        {
+            "date": "12.11.2021",
+            "amount": -8275.76,
+            "category": "ЖКХ",
+            "description": "ЖКУ Квартира"
+        },
+        {
+            "date": "22.11.2021",
+            "amount": -8100.0,
+            "category": "Переводы",
+            "description": "Перевод Кредитная карта. ТП 10.2 RUR"
+        },
+        {
+            "date": "09.11.2021",
+            "amount": -7240.0,
+            "category": "Медицина",
+            "description": "Eurooptica"
+        }
+    ],
+    "currency_rates": [
+        {
+            "currency": "USD",
+            "rate": 90.74
+        },
+        {
+            "currency": "EUR",
+            "rate": 100.53
+        }
+    ],
+    "stock_prices": []
+}
