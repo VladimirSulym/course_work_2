@@ -43,6 +43,7 @@ def get_data_operations_group(data_operations: pd.DataFrame) -> list:
     return result
 
 def counts_top_transactions(data_operations: pd.DataFrame) -> list:
+    """Формирует ТОП 5 транзакций по сумме платежа"""
     data_operations.sort_values('Сумма платежа', ascending=True, inplace=True)
     result = []
     for index, row in data_operations.iloc[0:5].iterrows():
