@@ -1,7 +1,10 @@
+import datetime
 import json
 import os
+from calendar import month
 
 import pandas as pd
+from pandas.core.interchange.dataframe_protocol import DataFrame
 
 from config import DATA_PATH
 from src.dates import get_month_operation
@@ -42,6 +45,7 @@ def get_data_operations_group(data_operations: pd.DataFrame) -> list:
         })
     return result
 
+
 def counts_top_transactions(data_operations: pd.DataFrame) -> list:
     """Формирует ТОП 5 транзакций по сумме платежа"""
     data_operations.sort_values('Сумма платежа', ascending=True, inplace=True)
@@ -55,14 +59,31 @@ def counts_top_transactions(data_operations: pd.DataFrame) -> list:
         })
     return result
 
-def prof_categories_cashback(data_operations: pd.DataFrame, month: int, years: int) -> list:
-    data_operations_filter = get_data_operations_filter(data_operations, 6, 2021)
+
+def prof_categories_cashback(data_operations: pd.DataFrame, month: int, years: int) -> object:
+    """Функция определяет сколько кэшбека заработано в отчетный период (месяц) пр всем категориям"""
+    data_operations_filter = get_data_operations_filter(data_operations, month, 2021)
     data_operations_group = data_operations_filter.groupby('Категория').agg({'Кэшбэк': ['sum']})
     result = {}
     for index, row in data_operations_group.iterrows():
         result.update({
-            index: float(row.loc['Кэшбэк'].values[0])
+            index: int(row.loc['Кэшбэк'].values[0])
         })
+    return result
+
+
+def spending_by_category(data_operations: pd.DataFrame, category: str, date: datetime = datetime.datetime.now()):
+    dates_range_for_filter = []
+    for i in (0, 30, 30):
+        date = date - datetime.timedelta(days=i)
+        dates_range_for_filter.append([date.month, date.year])
+    data_operations_filter = data_operations[0:0]
+    for date_range_for_filter in dates_range_for_filter:
+        data_operations_filter = data_operations_filter._append(
+            get_data_operations_filter(data_operations, date_range_for_filter[0], date_range_for_filter[1]),
+            ignore_index=True)
+    result = data_operations_filter.loc[
+        (data_operations_filter['Категория'] == category) & (data_operations_filter['Сумма операции'] < 0)]
     return result
 
 
