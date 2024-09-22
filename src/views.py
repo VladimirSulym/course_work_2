@@ -1,20 +1,18 @@
-from src.api_requests import get_data_request_curr_stock, get_data_request_curr_trade
-from src.dates import get_date_for_filter
 import json
 import os
+
 from config import DATA_PATH, SET_DATA
-from src.utils import (
-    get_data_operations,
-    get_data_operations_filter,
-    get_data_operations_group,
-    counts_top_transactions,
-    get_user_config,
-)
+from src.api_requests import (get_data_request_curr_stock,
+                              get_data_request_curr_trade)
+from src.dates import get_date_for_filter
+from src.utils import (counts_top_transactions, get_data_operations,
+                       get_data_operations_filter, get_data_operations_group,
+                       get_user_config)
 
 
 def set_viewer_main_page():
+    """Функция, которая собирает все данные для итогового JSON ответа и формирует словарь SET_DATA"""
     date_for_filter = get_date_for_filter()
-    print(date_for_filter)
     SET_DATA["greeting"] = date_for_filter[0]
     data_operations = get_data_operations()
     # data_operations_filter = get_data_operations_filter(data_operations,  date_for_filter[1],  date_for_filter[2])
@@ -36,11 +34,11 @@ def set_viewer_main_page():
 
     SET_DATA["stock_prices"] = data_stock
 
-    with open(os.path.join(DATA_PATH, "set_data_views.json"), "w") as f:
-        json.dump(SET_DATA, f, ensure_ascii=False, sort_keys=False, indent=4)
+    # with open(os.path.join(DATA_PATH, "set_data_views.json"), "w") as f:
+    #     json.dump(SET_DATA, f, ensure_ascii=False, sort_keys=False, indent=4)
 
-    print(SET_DATA)
+    return json.dumps(SET_DATA, ensure_ascii=False, sort_keys=False, indent=4)
 
 
-if __name__ == "__main__":
-    set_viewer_main_page()
+# if __name__ == "__main__":
+#     print(set_viewer_main_page())

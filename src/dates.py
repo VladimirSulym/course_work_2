@@ -29,6 +29,6 @@ def get_month_operation(date_str: str, month: int, year: int) -> bool:
         return False
 
 
-if __name__ == "__main__":
-    print(get_date_for_filter())
-    # print(get_month_operation())
+# if __name__ == "__main__":
+#     print(get_date_for_filter())
+#     print(get_month_operation())
