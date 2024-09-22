@@ -37,7 +37,7 @@ def set_viewer_main_page():
 
     SET_DATA['stock_prices'] = data_stock
 
-    with open(os.path.join(DATA_PATH, "set_data.json"), "w") as f:
+    with open(os.path.join(DATA_PATH, "set_data_views.json"), "w") as f:
         json.dump(SET_DATA, f, ensure_ascii=False, sort_keys=False, indent=4)
 
     print(SET_DATA)

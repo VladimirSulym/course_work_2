@@ -19,6 +19,8 @@ def get_date_for_filter() -> tuple:
     return greeting, month_for_filter, year_for_filter
 
 def get_month_operation(date_str: str, month: int, year: int) -> bool:
+    """Функция получает на вход строку даты для проверки и месяцу с годом. Выводит логический ответ True если
+    дата входит в этот месяц и год"""
     date_operation = datetime.datetime.strptime(date_str, "%d.%m.%Y %H:%M:%S")
     if date_operation.month == month and date_operation.year == year:
         return True

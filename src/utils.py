@@ -19,7 +19,7 @@ def get_data_operations() -> pd.DataFrame:
     return pd.read_excel(os.path.join(DATA_PATH, "operations.xlsx"))
 
 
-def get_data_operations_filter(data_operations: pd.DataFrame, month, years) -> pd.DataFrame:
+def get_data_operations_filter(data_operations: pd.DataFrame, month: int, years: int) -> pd.DataFrame:
     """Функция, которая принимает DataFrame и дату (месяц и год) для фильтрации и возвращает DataFrame
     отфильтрованный по дате"""
     data_operations_filter = data_operations[0:0]
@@ -52,6 +52,16 @@ def counts_top_transactions(data_operations: pd.DataFrame) -> list:
             "amount": row['Сумма платежа'],
             "category": row['Категория'],
             "description": row['Описание']
+        })
+    return result
+
+def prof_categories_cashback(data_operations: pd.DataFrame, month: int, years: int) -> list:
+    data_operations_filter = get_data_operations_filter(data_operations, 6, 2021)
+    data_operations_group = data_operations_filter.groupby('Категория').agg({'Кэшбэк': ['sum']})
+    result = {}
+    for index, row in data_operations_group.iterrows():
+        result.update({
+            index: float(row.loc['Кэшбэк'].values[0])
         })
     return result
 

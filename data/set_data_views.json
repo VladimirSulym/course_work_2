@@ -1,5 +1,5 @@
 {
-    "greeting": "Добрый вечер",
+    "greeting": "Добрый день",
     "cards": [
         {
             "last_digits": "4556",
@@ -52,11 +52,11 @@
     "currency_rates": [
         {
             "currency": "USD",
-            "rate": 92.24
+            "rate": 92.52
         },
         {
             "currency": "EUR",
-            "rate": 103.07
+            "rate": 103.38
         }
     ],
     "stock_prices": [
