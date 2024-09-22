@@ -12,12 +12,12 @@ def get_data_request_curr_stock(currency: str) -> float:
     payload = {
         "to": "RUB",
         "from": currency,
-        "amount": '1',
+        "amount": "1",
     }
     headers = {"apikey": os.getenv("API_KEY")}
     response = requests.get(url, headers=headers, params=payload)
     result = response.json()
-    return round(result['result'], 2)
+    return round(result["result"], 2)
 
 
 def get_data_request_curr_trade(stock: str) -> float:
@@ -26,9 +26,9 @@ def get_data_request_curr_trade(stock: str) -> float:
     payload = {"symbols": stock}
     response = requests.get(url, params=payload)
     result = response.json()
-    return round(result['data'][0]['close'], 2)
+    return round(result["data"][0]["close"], 2)
 
 
-if __name__ == '__main__':
-    print(get_data_request_curr_stock('EUR'))
-    print(get_data_request_curr_trade('AAPL'))
+if __name__ == "__main__":
+    print(get_data_request_curr_stock("EUR"))
+    print(get_data_request_curr_trade("AAPL"))
