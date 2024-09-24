@@ -17,9 +17,11 @@ def set_prof_categories_cashback():
     # with open(os.path.join(DATA_PATH, "set_data_services.json"), "w") as f:
     #     json.dump(result, f, ensure_ascii=False, sort_keys=False, indent=4)
 
-    return json.dumps(result, ensure_ascii=False, sort_keys=False, indent=4)
+    result = json.dumps(result, ensure_ascii=False, sort_keys=False, indent=4)
+
+    return result
 
 
-# if __name__ == "__main__":
-#     print(set_prof_categories_cashback())
+if __name__ == "__main__":
+    print(set_prof_categories_cashback())
 #     print(set_prof_categories_cashback())

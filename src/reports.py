@@ -43,9 +43,9 @@ def print_report(file_name=f'reports_{datetime.datetime.now().strftime("%d-%m-%Y
     return my_decorator
 
 
-@print_report()
+# @print_report()
 def set_spending_by_category(
-    category="Супермаркеты", date_for_filter: datetime = datetime.datetime.now()
+    category, date_for_filter: datetime = datetime.datetime.now()
 ) -> pd.DataFrame:
     """Функция, которая принимает название категории и возвращает отфильтрованный DataFrame со всеми
     тратами по заданной категории за последние три месяца"""
