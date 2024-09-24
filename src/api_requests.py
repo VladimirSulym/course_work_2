@@ -29,6 +29,6 @@ def get_data_request_curr_trade(stock: str) -> float:
     return round(result["data"][0]["close"], 2)
 
 
-if __name__ == "__main__":
-    print(get_data_request_curr_stock("EUR"))
-    print(get_data_request_curr_trade("AAPL"))
+# if __name__ == "__main__":
+#     print(get_data_request_curr_stock("EUR"))
+#     print(get_data_request_curr_trade("AAPL"))

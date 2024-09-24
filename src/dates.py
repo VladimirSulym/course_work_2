@@ -1,9 +1,17 @@
 import datetime
+import logging
 
+logger = logging.getLogger(__name__)
+console_handler = logging.StreamHandler()
+file_formatter = logging.Formatter("%(name)s / %(funcName)s / %(levelname)s: %(message)s")
+console_handler.setFormatter(file_formatter)
+logger.addHandler(console_handler)
+logger.setLevel(logging.DEBUG)
 
 def get_date_for_filter() -> tuple:
     """Функция выдает приветствие, согласно текущему, времени и текущий месяц в который попадает текущая дата"""
     date_now = datetime.datetime.now()
+    # logger.debug(date_now)
     hour = date_now.hour
     if 0 <= hour < 6:
         greeting = "Доброй ночи"
