@@ -26,6 +26,7 @@ def get_data_request_curr_trade(stock: str) -> float:
     payload = {"symbols": stock}
     response = requests.get(url, params=payload)
     result = response.json()
+    print(result)
     return round(result["data"][0]["close"], 2)
 
 

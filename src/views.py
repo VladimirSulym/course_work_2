@@ -1,18 +1,22 @@
 import json
-import os
 
-from config import DATA_PATH, SET_DATA
+from config import SET_DATA
 from src.api_requests import (get_data_request_curr_stock,
                               get_data_request_curr_trade)
-from src.dates import get_date_for_filter
+from src.dates import get_date_for_filter, str_to_date
 from src.utils import (counts_top_transactions, get_data_operations,
                        get_data_operations_filter, get_data_operations_group,
                        get_user_config)
 
 
-def set_viewer_main_page():
+def set_viewer_main_page(date_str: str) -> json:
     """Функция, которая собирает все данные для итогового JSON ответа и формирует словарь SET_DATA"""
-    date_for_filter = get_date_for_filter()
+    if date_str:
+        date_for_filter = str_to_date(date_str)
+        date_for_filter = get_date_for_filter(date_for_filter)
+    else:
+        date_for_filter = get_date_for_filter(None)
+
     SET_DATA["greeting"] = date_for_filter[0]
     data_operations = get_data_operations()
     # data_operations_filter = get_data_operations_filter(data_operations,  date_for_filter[1],  date_for_filter[2])

@@ -32,11 +32,8 @@ def get_user_config() -> dict:
 def get_data_operations() -> pd.DataFrame:
     """Функция считывает данные об операциях из файла operations.xlsx и возвращает из в виде DataFrame"""
     logger.info("Функция запущена")
-    try:
-        result = pd.read_excel(os.path.join(DATA_PATH, "operations.xlsx"))
-        logger.info("Файл найден, данные извлечены без ошибок")
-    except Exception as e:
-        logger.error(e)
+    result = pd.read_excel(os.path.join(DATA_PATH, "operations.xlsx"))
+    logger.info("Файл найден, данные извлечены без ошибок")
     return result
 
 

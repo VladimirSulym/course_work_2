@@ -1,16 +1,14 @@
 import json
-import os
 
-from config import DATA_PATH
-from src.dates import get_date_for_filter
+from src.dates import get_date_for_filter, str_to_date
 from src.utils import get_data_operations, prof_categories_cashback
 
 
-def set_prof_categories_cashback():
+def set_prof_categories_cashback(date):
     """Функция, которая собирает данные сколько на каждой категории можно заработать кешбэка в указанном месяце года
     и передает их в JSON"""
     data_operations = get_data_operations()
-    date_for_filter = get_date_for_filter()
+    date_for_filter = get_date_for_filter(str_to_date(date))
 
     result = prof_categories_cashback(data_operations, date_for_filter[1], date_for_filter[2])
 
@@ -22,6 +20,6 @@ def set_prof_categories_cashback():
     return result
 
 
-if __name__ == "__main__":
-    print(set_prof_categories_cashback())
+# if __name__ == "__main__":
+#     print(set_prof_categories_cashback())
 #     print(set_prof_categories_cashback())
